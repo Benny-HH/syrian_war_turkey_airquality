@@ -217,7 +217,7 @@ server <- function(input, output, session) {
     
     filtered <- sum_syria_combined[yy == input$year]
     
-    if (!is.null(input$syria_event) && input$syria_event != "All") {
+    if (!is.null(input$syria_event)) {
       filtered <- filtered[event_type == input$syria_event]
     }    
   
@@ -262,7 +262,6 @@ server <- function(input, output, session) {
         layerId = ~monitor,
         label = ~lapply(paste0(
           "<b>", monitor, "</b><br>",
-          "Station ID: ", monitor_id, "<br>",
           "Correlation (Events ~ PM10): ", round(cor_var, 3), "<br>",
           "P Value: ", signif(p_val, 3)
         ), HTML),
